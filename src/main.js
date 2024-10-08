@@ -117,3 +117,15 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote}
 }
+
+let randomImage = images[getRandomIndex(images)]
+let randomTitle = titles[getRandomIndex(titles)]
+let randomQuote = quotes[getRandomIndex(quotes)]
+
+let randomPoster = createPoster(randomImage, randomTitle, randomQuote)
+
+document.getElementById("random-image").setAttribute("src", randomPoster.imageURL);
+document.getElementById("random-title").textContent = randomPoster.title;
+document.getElementById("random-quote").textContent = randomPoster.quote;
+
+console.log(randomPoster)

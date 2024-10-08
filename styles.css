@@ -4,8 +4,8 @@
 *:after {
   box-sizing: border-box;
   font-family: "EB Garamond", serif;
-  margin: auto;
   text-align: center;
+  text-decoration-color: #ffffff
 }
 
 body {
@@ -48,17 +48,16 @@ button:hover {
   width: 70%;
 }
 
-.poster-img {
-  background-size: cover;
-  border: 2px solid white;
-  max-width: 80%;
-}
-
 .poster-title,
 .poster-quote {
   color: white;
   line-height: 1;
   width: 90%;
+}
+.poster-img {
+  background-size: cover;
+  border: 2px solid white;
+  max-width: 80%;
 }
 
 .poster-title {
