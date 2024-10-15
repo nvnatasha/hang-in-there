@@ -4,8 +4,8 @@
 *:after {
   box-sizing: border-box;
   font-family: "EB Garamond", serif;
+  margin: auto;
   text-align: center;
-  text-decoration-color: #ffffff
 }
 
 body {
@@ -38,6 +38,12 @@ button:hover {
   height: 100vh;
 }
 
+#random-title,
+#random-quote {
+  color: white;
+  line-height: 1;
+  width: 90%;
+}
 .poster {
   background: black;
   display: flex;
@@ -48,19 +54,15 @@ button:hover {
   width: 70%;
 }
 
-.poster-title,
-.poster-quote {
-  color: white;
-  line-height: 1;
-  width: 90%;
-}
-.poster-img {
-  background-size: cover;
+#random-image {
+  object-fit: contain;  /* Ensures the entire image is visible */
+  width: 100%;
+  max-height: 500px;    /* Adjust this value as needed */
   border: 2px solid white;
-  max-width: 80%;
 }
 
-.poster-title {
+
+#random-title {
   font-size: 60px;
   font-weight: normal;
   letter-spacing: 20px;
@@ -142,4 +144,55 @@ button:hover {
   letter-spacing: 5px;
   margin-bottom: 10px;
   text-transform: uppercase;
+}
+
+/* ~~~~~ unmotivational pictures ~~~~~ */
+.unmotivational-posters {
+  padding: 40px;
+}
+
+.unmotivational-posters-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px 100px;
+  background:lightgrey;
+}
+
+/* .sad-mini-poster {
+  background: grey;
+  color: black;
+  height: 340px;
+  padding: 25px;
+  width: 425px;
+} */
+ .sad-mini-poster {
+ background: grey;
+    color: black;
+    height: 340px;
+    padding: 25px;
+    width: 425px;
+    margin: 0.4%;
+    border-radius: 4%;
+ }
+.sad-mini-poster img {
+  height:200px;
+  width: 300px;
+}
+
+.sad-mini-poster h2,
+.sad-mini-poster h4,
+.delete {
+  color: white;
+  line-height: 1;
+  width: 90%;
+}
+
+.sad-mini-poster h2 {
+  font-size: 30px;
+  font-weight: normal;
+  letter-spacing: 5px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  color: black;
 }
