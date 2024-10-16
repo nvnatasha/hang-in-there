@@ -220,7 +220,7 @@ let unmotivationalPostersData = [
     vintage: false,
     img_url: "./assets/doubt.jpg",
   }
-];
+]
 
 var savedPosters = [];
 var currentPoster;
@@ -235,7 +235,6 @@ let showFormButton = document.querySelector('.show-form')
 let showSavedButton = document.querySelector('.show-saved')
 let savePosterButton = document.querySelector('.save-poster')
 let takeBackButton = document.querySelector('.show-main')
-
 let toMainButton = document.querySelector('.back-to-main')
 let showMyPosterButton = document.querySelector('.make-poster')
 let mainPoster = document.querySelector('.main-poster')
@@ -249,9 +248,8 @@ let unmotivationalPosters = document.querySelector('.unmotivational-posters')
 let unmotivationalButton = document.querySelector('.unmotivational')
 let awayFromSadButton = document.querySelector('.take-me-back')
 let sadPostersGrid = document.querySelector('.unmotivational-posters-grid')
-sadPostersGrid.addEventListener('dblclick', deletePoster);
 
-// event listeners go here 👇
+
 window.addEventListener('load', createRandomPoster)
 randomButton.addEventListener('click', createRandomPoster)
 showFormButton.addEventListener('click', showPosterForm)
@@ -262,8 +260,8 @@ toMainButton.addEventListener('click', goBack)
 showMyPosterButton.addEventListener('click', createUserPoster)
 unmotivationalButton.addEventListener('click', showUnmotivationalPosters)
 awayFromSadButton.addEventListener('click', goBack)
-// functions and event handlers go here 👇
-// (we've provided two to get you started)!
+
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
@@ -285,16 +283,15 @@ function createPoster(imageURL, title, quote) {
     title: title, 
     quote: quote
   }
-  
 }
 
 function createRandomPoster(){
   randomize()
   let newRandomPoster = createPoster(randomImage, randomTitle, randomQuote)
 
-  imageURL.src = newRandomPoster.imageURL
-  title.innerText = newRandomPoster.title
-  quote.innerText = newRandomPoster.quote
+    imageURL.src = newRandomPoster.imageURL
+    title.innerText = newRandomPoster.title
+    quote.innerText = newRandomPoster.quote
 
   currentPoster = newRandomPoster 
 }
@@ -307,14 +304,6 @@ function showPosterForm(event) {
     posterForm.classList.remove('hidden')
   }
 }
-
-// function showSavedPosters(event) {
-
-//   if (mainPoster && savedPostersForm) {
-//     mainPoster.classList.add('hidden')
-//     savedPostersForm.classList.remove('hidden')
-//   }
-// }
 
 function showSavedPosters(event) {
   if (mainPoster && savedPostersForm) {
@@ -351,13 +340,12 @@ function showUnmotivationalPosters(){
   displayUnmotivationalPosters()
 }
 
-
 function createUserPoster(event) {
   event.preventDefault()
 
-  imageURL.src = userImage.value
-  title.innerText = userTitle.value
-  quote.innerText = userQuote.value
+    imageURL.src = userImage.value
+    title.innerText = userTitle.value
+    quote.innerText = userQuote.value
 
   currentPoster = createPoster(userImage.value, userTitle.value, userQuote.value)
 
@@ -372,47 +360,16 @@ function resetPosterForm() {
   userTitle.value = ''
   userQuote.value = ''
 }
-// function cleanData(data) {
-//   return createPoster(img_url, name, description)
 
-  function cleanData(unmotivationalPostersData) 
-  { return unmotivationalPostersData.map(poster => 
-    createPoster(poster.img_url, poster.name, poster.description)); }
+  function cleanData(unmotivationalPostersData) {
+    return unmotivationalPostersData.map(poster => 
+    createPoster(poster.img_url, poster.name, poster.description)) }
 
-  // let cleanedData = unmotivationalPostersData.map(sadPoster => {
-    // imageURL = sadPoster.img_url
-    // title = sadPoster.name
-    // quote = sadPoster.description
-    // return createPoster(imageURL, title, quote)
-  
-
-  var cleanedPosters = cleanData(unmotivationalPostersData);
-  console.log(cleanedPosters)
-
-
-
-
-//    console.log(cleanData(unmotivationalPostersData))
-
-//     cleanedPosters.push(cleanedData)
-//     console.log(cleanedPosters)
-// }
-
-
-// function savePoster() {
-//   if (currentPoster) {
-//       savedPosters.push(currentPoster)
- 
-//       if (mainPoster && savedPostersForm) {
-//           mainPoster.classList.add('hidden')
-//           savedPostersForm.classList.remove('hidden')
-//       }
-//     }
-//   } 
+  var cleanedPosters = cleanData(unmotivationalPostersData)
 
   function savePoster() {
     if (currentPoster) {
-        const isDuplicate = savedPosters.some(poster => poster.id === currentPoster.id)
+        let isDuplicate = savedPosters.some(poster => poster.id === currentPoster.id)
         if (!isDuplicate) {
             savedPosters.push(currentPoster)
 
@@ -421,12 +378,11 @@ function resetPosterForm() {
       }
     }
 
-
 function displaySavedPosters() {
   postersGrid.innerHTML = ''
 
   savedPosters.forEach(poster => {
-      const posterCard = document.createElement('div')
+      let posterCard = document.createElement('div')
       posterCard.className = 'mini-poster' 
 
       posterCard.innerHTML = `
@@ -434,6 +390,7 @@ function displaySavedPosters() {
           <h2>${poster.title}</h2>
           <h4>${poster.quote}</h4>
       `
+
       postersGrid.appendChild(posterCard)
   })
 }
@@ -442,9 +399,9 @@ function displayUnmotivationalPosters() {
   sadPostersGrid.innerHTML = ''
 
     cleanedPosters.forEach(sadPoster => {
-      const sadPosterCard = document.createElement('div')
+      let sadPosterCard = document.createElement('div')
       sadPosterCard.className = 'sad-mini-poster' 
-      sadPosterCard.setAttribute('data-id', sadPoster.id)
+      sadPosterCard.setAttribute('data-id', sadPoster.id);
 
       sadPosterCard.innerHTML = `
           <img src="${sadPoster.imageURL}" alt="Poster Image" />
@@ -453,7 +410,7 @@ function displayUnmotivationalPosters() {
       `
       sadPosterCard.addEventListener('dblclick', () => {
         console.log("Attempting to delete:", sadPoster.imageURL)
-        deletePoster(sadPoster.imageURL);
+        deletePoster(sadPoster.imageURL)
       })
 
       sadPostersGrid.appendChild(sadPosterCard)
@@ -462,41 +419,8 @@ function displayUnmotivationalPosters() {
 
 function deletePoster(imageURL) {
   cleanedPosters = cleanedPosters.filter(poster => poster.imageURL !== imageURL)
-  
-  displayUnmotivationalPosters();
+
+  displayUnmotivationalPosters()
 }
 
 
-// function switchPages(showPage) {
-//   var pageViews = document.querySelectorAll('section');
-//   for ( var i = 0; i < pageViews.length; i++) {
-//     pageViews[i].classList.add('hidden')
-//   }
-//   showPage.classList.remove('hidden')
-// }
-
-// showFormButton.addEventListener('click', function(){
-//   switchPages(posterForm)
-// })
-// showSavedButton.addEventListener('click', function(){
-//   switchPages(savedPostersForm)
-// })
-// savePosterButton.addEventListener('click', function(){
-//   switchPages(savedPostersForm)
-// })
-// takeBackButton.addEventListener('click', function(){
-//   switchPages(mainPoster)
-// })
-// toMainButton.addEventListener('click', function(){
-//   switchPages(mainPoster)
-// })
-
-// makePosterButton.addEventListener('click', function(event){
-//   createUserPoster(event)
-// })
-
-
-// ocument.documentElement.innerHTML = `<pre>${document.documentElement.innerHTML.replace(
-//   /</g,
-//   "&lt;",
-// )}</pre>`;
